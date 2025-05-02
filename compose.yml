@@ -3,5 +3,5 @@ services:
     image: node:22
     volumes:
     - .:/ws
-    entrypoint: bash -xc "tail -f"
     working_dir: /ws/opinion-ate
+    entrypoint: bash -xc "source .entrypoint.build || (test ! -e .entrypoint.build && npm install && npm start -- --host=0.0.0.0)"
