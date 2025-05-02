@@ -5,3 +5,5 @@ services:
     - .:/ws
     working_dir: /ws/opinion-ate
     entrypoint: bash -xc "source .entrypoint.build || (test ! -e .entrypoint.build && npm install && npm start -- --host=0.0.0.0)"
+    ports:
+    - 4200:4200
