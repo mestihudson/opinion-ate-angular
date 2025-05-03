@@ -21,7 +21,7 @@ jobs:
       run: npx playwright install --with-deps
     - name: unit tests
       env:
-        CHROME_BIN: ~/.cache/ms-playwright/chromium-1169/chrome-linux/chrome
+        CHROME_BIN: "/home/runner/.cache/ms-playwright/chromium-1169/chrome-linux/chrome"
       run: npm test -- --watch=false
     - name: e2e tests
       run: npm run e2e
