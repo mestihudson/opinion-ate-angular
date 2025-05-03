@@ -23,7 +23,7 @@ services:
     working_dir: /ws/opinion-ate
     entrypoint: bash -xc "(source /ws/.entrypoint.unit) || (test ! -e /ws/.entrypoint.unit && npm install && npm test)"
     environment:
-    - CHROME_BIN=/ms-playwright/chromium-1169/chrome-linux/chrome
+    - CHROME_BIN=/root/.cache/ms-playwright/chromium-1169/chrome-linux/chrome
 
   e2e-run:
     image: mcr.microsoft.com/playwright:v1.52.0-noble
