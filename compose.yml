@@ -7,3 +7,12 @@ services:
     entrypoint: bash -xc "source .entrypoint.build || (test ! -e .entrypoint.build && npm install && npm start -- --host=0.0.0.0)"
     ports:
     - 4200:4200
+
+  unit:
+    image: mcr.microsoft.com/playwright:v1.52.0-noble
+    volumes:
+    - .:/ws
+    working_dir: /ws/opinion-ate
+    entrypoint: bash -xc "(source /ws/.entrypoint.unit) || (test ! -e /ws/.entrypoint.unit && npm test)"
+    environment:
+    - CHROME_BIN=/ms-playwright/chromium-1169/chrome-linux/chrome
