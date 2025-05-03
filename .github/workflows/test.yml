@@ -17,8 +17,7 @@ jobs:
       run: npm ci
     - name: lint
       run: npm run lint
-    - name: install playwright browsers
-      run: npx playwright install --with-deps
+    - uses: microsoft/playwright-github-action@v1
     - name: unit tests
       env:
         CHROME_BIN: "/home/runner/.cache/ms-playwright/chromium-1169/chrome-linux/chrome"
