@@ -4,7 +4,7 @@ services:
     volumes:
     - .:/ws
     working_dir: /ws/opinion-ate
-    entrypoint: bash -xc "source .entrypoint.dev || (test ! -e .entrypoint.dev && npm install && npm start -- --host=0.0.0.0)"
+    entrypoint: bash -xc "source .entrypoint.dev || (test ! -e .entrypoint.dev && npm install && npm start -- --host=0.0.0.0 --disable-host-check)"
     ports:
     - 4200:4200
 
