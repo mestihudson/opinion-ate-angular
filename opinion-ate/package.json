@@ -2,6 +2,7 @@
   "name": "opinion-ate",
   "version": "0.0.0",
   "scripts": {
+    "e2e": "tail -f",
     "lint": "biome check src public biome.json angular.json package.json",
     "ng": "ng",
     "start": "ng serve",

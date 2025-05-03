@@ -16,3 +16,10 @@ services:
     entrypoint: bash -xc "(source /ws/.entrypoint.unit) || (test ! -e /ws/.entrypoint.unit && npm test)"
     environment:
     - CHROME_BIN=/ms-playwright/chromium-1169/chrome-linux/chrome
+
+  e2e:
+    image: mcr.microsoft.com/playwright:v1.52.0-noble
+    volumes:
+    - .:/ws
+    working_dir: /ws/opinion-ate
+    entrypoint: bash -xc "(source /ws/.entrypoint.e2e) || (test ! -e /ws/.entrypoint.e2e && npm run e2e)"
