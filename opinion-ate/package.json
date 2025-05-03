@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "e2e": "playwright test",
-    "lint": "biome check src public biome.json angular.json package.json",
+    "lint": "biome check src public biome.json angular.json package.json playwright.config.ts karma.conf.js tests/e2e",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
