@@ -8,6 +8,13 @@ services:
     ports:
     - 4200:4200
 
+  lint:
+    image: node:22
+    volumes:
+    - .:/ws
+    working_dir: /ws/opinion-ate
+    entrypoint: bash -xc "source .entrypoint.lint || (test ! -e .entrypoint.build && npm install && npm run lint)"
+
   unit:
     image: mcr.microsoft.com/playwright:v1.52.0-noble
     volumes:
