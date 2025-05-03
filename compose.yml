@@ -23,3 +23,15 @@ services:
     - .:/ws
     working_dir: /ws/opinion-ate
     entrypoint: bash -xc "(source /ws/.entrypoint.e2e-run) || (test ! -e /ws/.entrypoint.e2e-run && npm run e2e)"
+
+  novnc:
+    image: theasp/novnc:latest
+    ports:
+    - 58080:8080
+    environment:
+    - DISPLAY_WIDTH=1600
+    - DISPLAY_HEIGHT=968
+    - RUN_XTERM=no
+    volumes:
+    - .:/ws
+    entrypoint: bash -xc "source /ws/.entrypoint.novnc || (test ! -e /ws/.entrypoint.novnc && /app/entrypoint.sh)"
