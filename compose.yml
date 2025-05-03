@@ -20,7 +20,7 @@ services:
     volumes:
     - .:/ws
     working_dir: /ws/opinion-ate
-    entrypoint: bash -xc "(source /ws/.entrypoint.unit) || (test ! -e /ws/.entrypoint.unit && npm test)"
+    entrypoint: bash -xc "(source /ws/.entrypoint.unit) || (test ! -e /ws/.entrypoint.unit && npm install && npm test)"
     environment:
     - CHROME_BIN=/ms-playwright/chromium-1169/chrome-linux/chrome
 
@@ -29,7 +29,7 @@ services:
     volumes:
     - .:/ws
     working_dir: /ws/opinion-ate
-    entrypoint: bash -xc "(source /ws/.entrypoint.e2e-run) || (test ! -e /ws/.entrypoint.e2e-run && npm run e2e)"
+    entrypoint: bash -xc "(source /ws/.entrypoint.e2e-run) || (test ! -e /ws/.entrypoint.e2e-run && npm install && npm run e2e)"
     environment:
     - BASE_URL=http://dev.opinion-ate-angular.com.br:4200
     links:
@@ -40,7 +40,7 @@ services:
     volumes:
     - .:/ws
     working_dir: /ws/opinion-ate
-    entrypoint: bash -xc "(source /ws/.entrypoint.e2e-open) || (test ! -e /ws/.entrypoint.e2e-open && npm run e2e -- --ui)"
+    entrypoint: bash -xc "(source /ws/.entrypoint.e2e-open) || (test ! -e /ws/.entrypoint.e2e-open && npm install && npm run e2e -- --ui)"
     environment:
     - DISPLAY=novnc:0.0
     - BASE_URL=http://dev.opinion-ate-angular.com.br:4200
