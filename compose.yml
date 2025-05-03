@@ -4,25 +4,34 @@ services:
     volumes:
     - .:/ws
     working_dir: /ws/opinion-ate
-    entrypoint: bash -xc "source .entrypoint.dev || (test ! -e .entrypoint.dev && npm install && npm start -- --host=0.0.0.0 --disable-host-check)"
+    entrypoint: bash -xc "source /ws/.entrypoint.dev || (test ! -e /ws/.entrypoint.dev && npm install && npm start -- --host=0.0.0.0 --disable-host-check)"
     ports:
     - 4200:4200
+
+  lint:
+    image: node:22
+    volumes:
+    - .:/ws
+    working_dir: /ws/opinion-ate
+    entrypoint: bash -xc "source /ws/.entrypoint.lint || (test ! -e /ws/.entrypoint.lint && npm install && npm run lint)"
 
   unit:
     image: mcr.microsoft.com/playwright:v1.52.0-noble
     volumes:
     - .:/ws
+    - .cache/ms-playwright:/root/.cache/ms-playwright
     working_dir: /ws/opinion-ate
-    entrypoint: bash -xc "(source /ws/.entrypoint.unit) || (test ! -e /ws/.entrypoint.unit && npm test)"
+    entrypoint: bash -xc "(source /ws/.entrypoint.unit) || (test ! -e /ws/.entrypoint.unit && npm install && npm test)"
     environment:
-    - CHROME_BIN=/ms-playwright/chromium-1169/chrome-linux/chrome
+    - CHROME_BIN=/root/.cache/ms-playwright/chromium-1169/chrome-linux/chrome
 
   e2e-run:
     image: mcr.microsoft.com/playwright:v1.52.0-noble
     volumes:
     - .:/ws
+    - .cache/ms-playwright:/root/.cache/ms-playwright
     working_dir: /ws/opinion-ate
-    entrypoint: bash -xc "(source /ws/.entrypoint.e2e-run) || (test ! -e /ws/.entrypoint.e2e-run && npm run e2e)"
+    entrypoint: bash -xc "(source /ws/.entrypoint.e2e-run) || (test ! -e /ws/.entrypoint.e2e-run && npm install && npm run e2e)"
     environment:
     - BASE_URL=http://dev.opinion-ate-angular.com.br:4200
     links:
@@ -32,8 +41,9 @@ services:
     image: mcr.microsoft.com/playwright:v1.52.0-noble
     volumes:
     - .:/ws
+    - .cache/ms-playwright:/root/.cache/ms-playwright
     working_dir: /ws/opinion-ate
-    entrypoint: bash -xc "(source /ws/.entrypoint.e2e-open) || (test ! -e /ws/.entrypoint.e2e-open && npm run e2e -- --ui)"
+    entrypoint: bash -xc "(source /ws/.entrypoint.e2e-open) || (test ! -e /ws/.entrypoint.e2e-open && npm install && npm run e2e -- --ui)"
     environment:
     - DISPLAY=novnc:0.0
     - BASE_URL=http://dev.opinion-ate-angular.com.br:4200

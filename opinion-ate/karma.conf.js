@@ -1,4 +1,4 @@
-module.exports = function(config) {
+module.exports = (config) => {
   config.set({
     frameworks: ['jasmine', '@angular-devkit/build-angular'],
     plugins: [
@@ -10,9 +10,7 @@ module.exports = function(config) {
     customLaunchers: {
       ChromeHeadlessNoSandbox: {
         base: 'ChromeHeadless',
-        flags: [
-          "--no-sandbox",
-        ],
+        flags: ['--no-sandbox'],
       },
     },
   });
