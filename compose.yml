@@ -4,7 +4,7 @@ services:
     volumes:
     - .:/ws
     working_dir: /ws/opinion-ate
-    entrypoint: bash -xc "source .entrypoint.dev || (test ! -e .entrypoint.dev && npm install && npm start -- --host=0.0.0.0 --disable-host-check)"
+    entrypoint: bash -xc "source /ws/.entrypoint.dev || (test ! -e /ws/.entrypoint.dev && npm install && npm start -- --host=0.0.0.0 --disable-host-check)"
     ports:
     - 4200:4200
 
@@ -13,7 +13,7 @@ services:
     volumes:
     - .:/ws
     working_dir: /ws/opinion-ate
-    entrypoint: bash -xc "source .entrypoint.lint || (test ! -e .entrypoint.build && npm install && npm run lint)"
+    entrypoint: bash -xc "source /ws/.entrypoint.lint || (test ! -e /ws/.entrypoint.lint && npm install && npm run lint)"
 
   unit:
     image: mcr.microsoft.com/playwright:v1.52.0-noble
