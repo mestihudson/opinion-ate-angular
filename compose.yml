@@ -8,6 +8,13 @@ services:
     ports:
     - 4200:4200
 
+  build:
+    image: node:22
+    volumes:
+    - .:/ws
+    working_dir: /ws/opinion-ate
+    entrypoint: bash -xc "source /ws/.entrypoint.build || (test ! -e /ws/.entrypoint.build && npm install && npm run build)"
+
   lint:
     image: node:22
     volumes:
