@@ -1,4 +1,12 @@
-# OpinionAte
+# opinion-ate-angular
+
+An app for tracking reviews of dishes at different restaurants.
+
+Production: <https://opinion-ate-angular-mestihudson.netlify.app>
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/548b7f07-1ff9-47a5-89a1-d268ea319a23/deploy-status)](https://app.netlify.com/sites/opinion-ate-angular-mestihudson/deploys)
+
+Dependencies are locked with a `package-lock.json` file, so please use `npm` instead of other package managers to install them.
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.10.
 
