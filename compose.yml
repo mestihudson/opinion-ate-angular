@@ -26,7 +26,7 @@ services:
     image: mcr.microsoft.com/playwright:v1.52.0-noble
     volumes:
     - .:/ws
-    - .cache/ms-playwright:/root/.cache/ms-playwright
+    - .cache/ms-playwright:/ms-playwright
     working_dir: /ws/opinion-ate
     entrypoint: bash -xc "(source /ws/.entrypoint.unit) || (test ! -e /ws/.entrypoint.unit && npm install && npm test)"
     environment:
@@ -36,7 +36,7 @@ services:
     image: mcr.microsoft.com/playwright:v1.52.0-noble
     volumes:
     - .:/ws
-    - .cache/ms-playwright:/root/.cache/ms-playwright
+    - .cache/ms-playwright:/ms-playwright
     working_dir: /ws/opinion-ate
     entrypoint: bash -xc "(source /ws/.entrypoint.e2e-run) || (test ! -e /ws/.entrypoint.e2e-run && npm install && npm run e2e)"
     environment:
@@ -48,7 +48,7 @@ services:
     image: mcr.microsoft.com/playwright:v1.52.0-noble
     volumes:
     - .:/ws
-    - .cache/ms-playwright:/root/.cache/ms-playwright
+    - .cache/ms-playwright:/ms-playwright
     working_dir: /ws/opinion-ate
     entrypoint: bash -xc "(source /ws/.entrypoint.e2e-open) || (test ! -e /ws/.entrypoint.e2e-open && npm install && npm run e2e -- --ui)"
     environment:
