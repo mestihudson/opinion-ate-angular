@@ -31,6 +31,8 @@ services:
     entrypoint: bash -xc "(source /ws/.entrypoint.unit) || (test ! -e /ws/.entrypoint.unit && npm install && npx playwright install --with-deps && npm test)"
     environment:
     - CHROME_BIN=/ms-playwright/chromium-1169/chrome-linux/chrome
+    ports:
+    - 9876:9876
 
   e2e-run:
     image: mcr.microsoft.com/playwright:v1.52.0-noble
