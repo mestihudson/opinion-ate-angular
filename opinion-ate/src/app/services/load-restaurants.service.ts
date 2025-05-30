@@ -1,4 +1,8 @@
+import { Observable, of } from "rxjs";
+
 export class LoadRestaurantsService {
-  loadRestaurants() { }
+  loadRestaurants(): Observable<any> {
+    return of(undefined);
+  }
 }
 
