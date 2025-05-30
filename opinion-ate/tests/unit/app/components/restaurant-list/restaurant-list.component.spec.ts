@@ -1,24 +1,11 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { render, screen } from '@testing-library/angular';
 
 import { RestaurantListComponent } from '@/app/components/restaurant-list/restaurant-list.component';
 
 describe('RestaurantListComponent', () => {
-  let fixture: ComponentFixture<RestaurantListComponent>;
-  let component: RestaurantListComponent;
+  it('should have a defined component', async () => {
+    await render(RestaurantListComponent)
 
-  beforeEach(() =>
-    TestBed.configureTestingModule({
-      imports: [RestaurantListComponent],
-    }),
-  );
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(RestaurantListComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create the app', () => {
-    expect(fixture).toMatchSnapshot();
-  });
+    expect(screen.getByText("RestaurantList")).toBeVisible();
+  })
 });
