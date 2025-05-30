@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`RestaurantListComponent should create the app 1`] = `
-<app-restaurant-list>
-  <div>
-    RestaurantList
-  </div>
-</app-restaurant-list>
-`;
