@@ -32,6 +32,7 @@
     "@playwright/test": "^1.52.0",
     "@testing-library/angular": "^17.3.7",
     "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
     "@types/jest": "^29.5.14",
     "@types/node": "^22.15.3",
     "jasmine-core": "~5.6.0",
