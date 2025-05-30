@@ -5,9 +5,7 @@ import { LoadRestaurantsService } from '@/app/services/load-restaurants.service'
 import { of } from 'rxjs';
 
 describe('RestaurantListComponent', () => {
-  it('load restaurants on first render', async () => {
-    const loadRestaurants = jest.fn().mockName('loadRestaurants');
-
+  const renderComponent = async (loadRestaurants) => {
     await render(RestaurantListComponent, {
       componentProviders: [
         {
@@ -18,6 +16,12 @@ describe('RestaurantListComponent', () => {
         },
       ],
     })
+  }
+
+  it('load restaurants on first render', async () => {
+    const loadRestaurants = jest.fn().mockName('loadRestaurants');
+
+    await renderComponent(loadRestaurants);
 
     expect(loadRestaurants).toHaveBeenCalled();
   })
@@ -29,16 +33,7 @@ describe('RestaurantListComponent', () => {
     ];
     const loadRestaurants = jest.fn(() => of(restaurants));
 
-    await render(RestaurantListComponent, {
-      componentProviders: [
-        {
-          provide: LoadRestaurantsService,
-          useValue: {
-            loadRestaurants,
-          },
-        },
-      ],
-    })
+    await renderComponent(loadRestaurants);
 
     expect(screen.getByText('Sushi Place')).toBeInTheDocument();
     expect(screen.getByText('Pizza Place')).toBeInTheDocument();
