@@ -23,16 +23,11 @@ services:
     entrypoint: bash -xc "source /ws/.entrypoint.lint || (test ! -e /ws/.entrypoint.lint && npm install && npm run lint)"
 
   unit:
-    image: mcr.microsoft.com/playwright:v1.52.0-noble
+    image: node:22
     volumes:
     - .:/ws
-    - .cache/ms-playwright:/ms-playwright
     working_dir: /ws/opinion-ate
-    entrypoint: bash -xc "(source /ws/.entrypoint.unit) || (test ! -e /ws/.entrypoint.unit && npm install && npx playwright install --with-deps && npm test)"
-    environment:
-    - CHROME_BIN=/ms-playwright/chromium-1169/chrome-linux/chrome
-    ports:
-    - 9876:9876
+    entrypoint: bash -xc "(source /ws/.entrypoint.unit) || (test ! -e /ws/.entrypoint.unit && npm install && npm test)"
 
   e2e-run:
     image: mcr.microsoft.com/playwright:v1.52.0-noble
