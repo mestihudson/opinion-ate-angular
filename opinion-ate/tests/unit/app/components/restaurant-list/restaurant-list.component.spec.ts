@@ -1,11 +1,23 @@
-import { render, screen } from '@testing-library/angular';
+import { render } from '@testing-library/angular';
 
 import { RestaurantListComponent } from '@/app/components/restaurant-list/restaurant-list.component';
+import { LoadRestaurantsService } from '@/app/services/load-restaurants.service';
 
 describe('RestaurantListComponent', () => {
-  it('should have a defined component', async () => {
-    await render(RestaurantListComponent)
+  it('load restaurants on first render', async () => {
+    const loadRestaurants = jest.fn().mockName('loadRestaurants');
 
-    expect(screen.getByText("RestaurantList")).toBeVisible();
+    await render(RestaurantListComponent, {
+      componentProviders: [
+        {
+          provide: LoadRestaurantsService,
+          useValue: {
+            loadRestaurants,
+          },
+        },
+      ],
+    })
+
+    expect(loadRestaurants).toHaveBeenCalled();
   })
 });
