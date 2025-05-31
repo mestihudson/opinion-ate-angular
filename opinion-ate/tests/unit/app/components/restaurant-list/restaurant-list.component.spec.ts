@@ -3,6 +3,7 @@ import { render, screen } from '@testing-library/angular';
 import { of } from 'rxjs';
 
 import { RestaurantListComponent } from '@/app/components/restaurant-list/restaurant-list.component';
+import { RestaurantModel } from '@/app/models/restaurant.model';
 import { LoadRestaurantsService } from '@/app/services/load-restaurants.service';
 
 describe('RestaurantListComponent', () => {
@@ -28,9 +29,9 @@ describe('RestaurantListComponent', () => {
   })
 
   it('display the restaurants', async () => {
-    const restaurants = [
-      { id: 1, name: 'Sushi Place' },
-      { id: 2, name: 'Pizza Place' },
+    const restaurants: RestaurantModel[] = [
+      { name: 'Sushi Place' },
+      { name: 'Pizza Place' },
     ];
     const loadRestaurants = jest.fn(() => of(restaurants));
 
