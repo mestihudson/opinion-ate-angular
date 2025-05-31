@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { LoadRestaurantsService } from '@/app/services/load-restaurants.service';
 import { AsyncPipe, NgForOf } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+
+import { LoadRestaurantsService } from '@/app/services/load-restaurants.service';
 
 @Component({
   imports: [AsyncPipe, NgForOf],

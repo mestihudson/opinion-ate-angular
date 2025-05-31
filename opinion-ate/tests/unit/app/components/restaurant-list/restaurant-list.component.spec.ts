@@ -1,8 +1,9 @@
 import { render, screen } from '@testing-library/angular';
 
+import { of } from 'rxjs';
+
 import { RestaurantListComponent } from '@/app/components/restaurant-list/restaurant-list.component';
 import { LoadRestaurantsService } from '@/app/services/load-restaurants.service';
-import { of } from 'rxjs';
 
 describe('RestaurantListComponent', () => {
   const renderComponent = async (loadRestaurants) => {
