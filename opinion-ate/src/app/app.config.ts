@@ -1,3 +1,4 @@
+import { provideHttpClient } from '@angular/common/http';
 import {
   type ApplicationConfig,
   provideZoneChangeDetection,
@@ -6,5 +7,6 @@ import {
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
+    provideHttpClient(),
   ],
 };
