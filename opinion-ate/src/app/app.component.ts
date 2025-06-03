@@ -1,12 +1,9 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RestaurantScreenComponent } from './components/restaurant-screen/restaurant-screen.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RestaurantScreenComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
 })
-export class AppComponent {
-  title = 'opinion-ate';
-}
+export class AppComponent {}
