@@ -5,6 +5,7 @@ export function replaceUrlByPattern(url: string, pattern: string, replacement: s
   if (url.startsWith(pattern)) {
     return url.replace(pattern, replacement);
   }
+  return url;
 }
 
 export function urlInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn): Observable<HttpEvent<unknown>> {
