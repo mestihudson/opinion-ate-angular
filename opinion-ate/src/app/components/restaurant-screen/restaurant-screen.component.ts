@@ -4,7 +4,6 @@ import { RestaurantListComponent } from '../restaurant-list/restaurant-list.comp
 @Component({
   selector: 'app-restaurant-screen',
   imports: [RestaurantListComponent],
-  templateUrl: './restaurant-screen.component.html'
+  templateUrl: './restaurant-screen.component.html',
 })
-export class RestaurantScreenComponent {
-}
+export class RestaurantScreenComponent {}

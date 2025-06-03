@@ -6,5 +6,4 @@ import { RestaurantScreenComponent } from './components/restaurant-screen/restau
   imports: [RestaurantScreenComponent],
   templateUrl: './app.component.html',
 })
-export class AppComponent {
-}
+export class AppComponent {}

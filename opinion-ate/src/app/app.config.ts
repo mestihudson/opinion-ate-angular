@@ -9,8 +9,6 @@ import { urlInterceptor } from '@/app/interceptors/url.interceptor';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideHttpClient(
-      withInterceptors([urlInterceptor]),
-    ),
+    provideHttpClient(withInterceptors([urlInterceptor])),
   ],
 };
